@@ -29,7 +29,7 @@ GameServer.prototype = {
 
     removePlayer: function(playerId){
         // Remove player object
-        this.players = this.players.filter(function(p) {return p.id != platerId});
+        this.players = this.players.filter(function(p) {return p.id != playerId});
     },
 
     // Sync player with new data received from a client
