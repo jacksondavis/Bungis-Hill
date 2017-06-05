@@ -1,5 +1,5 @@
 html, body{
-	background-color: #393532;
+	background-color: #B38235;
 }
 
 .name-prompt{
@@ -7,7 +7,7 @@ html, body{
 	margin: auto;
 	top: 0; left: 0; right: 0; bottom: 0;
 	width: 400px;
-	background-color: #a8b2bd;
+	background-color: #00515C;
 	z-index: 2;
 	padding: 10px;
 	height: 275px;
@@ -15,12 +15,22 @@ html, body{
 }
 
 .arena{
-	background-color: #dde5f2;
+	background-color: #FCFBB8;
 	pointer-events: none;
 	position: absolute;
 	margin: auto;
-	top: 0; left: 0; right: 0; bottom: 0;
+	top: 0; left: 0; right: 350px; bottom: 0;
 	border-radius: 4px;
+}
+
+.chat{
+	background-color: #FCFBB8;
+	position: absolute;
+	margin: auto;
+	top: 0; left: 1145px; right: 0; bottom: 0;
+	border-radius: 4px;
+	height: 580px;
+	width: 350px;
 }
 
 .player{
@@ -63,6 +73,7 @@ html, body{
 	margin: 10px 0;
 	width: 100%;
 	text-align: center;
+	color: white;
 }
 
 .player-selection li{
