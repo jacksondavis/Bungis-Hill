@@ -4,11 +4,11 @@
   "description": "Copy of tutorial",
   "main": "app.js",
   "scripts": {
-    "start" : "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.13.3",
-    "socket.io": "^1.3.7"
+    "socket.io": "^1.7.4"
   }
 }
