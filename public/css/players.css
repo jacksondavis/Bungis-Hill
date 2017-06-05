@@ -1,25 +1,26 @@
-body{
-	background-color: #ddd;
-	font-family: Helvetica Neue, Arial;
-	overflow: hidden;
+html, body{
+	background-color: #393532;
 }
 
 .name-prompt{
 	position: absolute;
-	top: 100px;
-	left: 50%;
-	margin-left: -200px;
+	margin: auto;
+	top: 0; left: 0; right: 0; bottom: 0;
 	width: 400px;
-	background-color: #eee;
+	background-color: #a8b2bd;
 	z-index: 2;
 	padding: 10px;
+	height: 275px;
+	border-radius: 4px;
 }
 
 .arena{
-	margin: 10px auto;
-	background-color: white;
-	position: relative;
+	background-color: #dde5f2;
 	pointer-events: none;
+	position: absolute;
+	margin: auto;
+	top: 0; left: 0; right: 0; bottom: 0;
+	border-radius: 4px;
 }
 
 .player{
