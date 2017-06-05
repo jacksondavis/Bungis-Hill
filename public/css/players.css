@@ -5,8 +5,9 @@
 }
 
 .arena{
-	background-color: #FCFBB8;
+	background-color: #DAD5B7;
 	border-radius: 4px;
+	box-sizing: border-box;
 	margin: auto;
 	pointer-events: none;
 	position: absolute;
@@ -14,7 +15,7 @@
 }
 
 .chat{
-	background-color: #FCFBB8;
+	background-color: #DAD5B7;
 	border-radius: 4px;
 	height: 580px;
 	margin: auto;
@@ -44,7 +45,7 @@
 }
 
 form{
-	background: #000;
+	background: none;
 	bottom: 0;
 	padding: 3px;
 	position: fixed;
@@ -52,7 +53,7 @@ form{
 }
 
 form button{
-	background: #00515C;
+	background: #3A5F6F;
 	border: none;
 	color: white;
 	padding: 10px;
@@ -90,7 +91,7 @@ html, body{
 }
 
 #messages{
-	background: #FCFBB8;
+	background: #DAD5B7;
 	bottom: 0;
 	height: 93%;
 	list-style-type: none;
@@ -108,7 +109,7 @@ html, body{
 }
 
 .name-prompt{
-	background-color: #00515C;
+	background-color: #3A5F6F;
 	border-radius: 4px;
 	height: 275px;
 	margin: auto;
