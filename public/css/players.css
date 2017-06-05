@@ -1,5 +1,6 @@
 html, body{
 	background-color: #B38235;
+	font: 13px Helvetica, Arial;
 }
 
 .name-prompt{
@@ -31,6 +32,32 @@ html, body{
 	border-radius: 4px;
 	height: 580px;
 	width: 350px;
+}
+
+.chat input{
+	width: 300px;
+	margin: 0;
+}
+.chat button{
+	width: 50px;
+	margin: 0;
+}
+
+#messages{
+	height: 93%;
+	background: #FCFBB8;
+	transform: rotate(180deg);
+	padding: 3px;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	margin: 0;
+	list-style-type: none;
+}
+
+#messages li
+{
+	padding: 5px 10px;
 }
 
 .player{
