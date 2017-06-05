@@ -94,7 +94,9 @@ io.on('connection', function(client) {
         else {
             name = people[client.id];
         }
-        console.log(name + ': ' + msg);
+        if (msg != '') {
+            console.log(name + ': ' + msg);
+        }
     });
 
     client.on('chat message', function(msg){
@@ -105,7 +107,9 @@ io.on('connection', function(client) {
         else {
             name = people[client.id];
         }
-        io.emit('chat message', name + ': ' + msg);
+        if (msg != '') {
+            io.emit('chat message', name + ': ' + msg);
+        }
     });
 });
 

@@ -5,7 +5,7 @@
 }
 
 html, body{
-	background-color: #B38235;
+	background-color: #243757;
 	font: 13px Helvetica, Arial;
 }
 
@@ -14,7 +14,7 @@ html, body{
 	margin: auto;
 	top: 0; left: 0; right: 0; bottom: 0;
 	width: 400px;
-	background-color: #00515C;
+	background-color: #3A5F6F;
 	z-index: 2;
 	padding: 10px;
 	height: 275px;
@@ -22,7 +22,7 @@ html, body{
 }
 
 .arena{
-	background-color: #FCFBB8;
+	background-color: #DAD5B7;
 	pointer-events: none;
 	position: absolute;
 	margin: auto;
@@ -31,7 +31,7 @@ html, body{
 }
 
 .chat{
-	background-color: #FCFBB8;
+	background-color: #DAD5B7;
 	position: absolute;
 	margin: auto;
 	top: 0; left: 1145px; right: 0; bottom: 0;
@@ -51,7 +51,7 @@ html, body{
 
 #messages{
 	height: 93%;
-	background: #FCFBB8;
+	background: #DAD5B7;
 	transform: rotate(180deg);
 	padding: 3px;
 	position: relative;
@@ -118,7 +118,7 @@ form input{
 
 form button{
 	width: 9%;
-	background: #00515C;
+	background: #3A5F6F;
 	border: none;
 	padding: 10px;
 	color: white;
