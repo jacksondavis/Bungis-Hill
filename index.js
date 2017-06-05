@@ -17,6 +17,8 @@ var server = app.listen(8080, function () {
 // Import socket.io module
 var io = require('socket.io')(server);  
 
+var people = {};
+
 function GameServer() {
     this.players = [];
 }
@@ -58,6 +60,7 @@ io.on('connection', function(client) {
 
     client.on('joinGame', function(player) {
         console.log(player.id + ' joined the game');
+        people[client.id] = player.id
         var initX = getRandomInt(40, 900);
         var initY = getRandomInt(40, 500);
         client.emit('addPlayer', { id: player.id, type: player.type, isLocal: true, x: initX, y: initY });
@@ -82,18 +85,14 @@ io.on('connection', function(client) {
         game.removePlayer(playerId);
         client.broadcast.emit('removePlayer', playerId);
     });
-});
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-  });
-});
+    client.on('chat message', function(msg){
+        console.log(people[client.id] + ': ' + msg);
+    });
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+    client.on('chat message', function(msg){
+        io.emit('chat message', people[client.id] + ': ' + msg);
+    });
 });
 
 function getRandomInt(min, max) {
