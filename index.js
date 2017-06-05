@@ -87,11 +87,25 @@ io.on('connection', function(client) {
     });
 
     client.on('chat message', function(msg){
-        console.log(people[client.id] + ': ' + msg);
+        var name = "";
+        if (people[client.id] == undefined) {
+            name = 'Guest';
+        }
+        else {
+            name = people[client.id];
+        }
+        console.log(name + ': ' + msg);
     });
 
     client.on('chat message', function(msg){
-        io.emit('chat message', people[client.id] + ': ' + msg);
+        var name = "";
+        if (people[client.id] == undefined) {
+            name = 'Guest';
+        }
+        else {
+            name = people[client.id];
+        }
+        io.emit('chat message', name + ': ' + msg);
     });
 });
 
