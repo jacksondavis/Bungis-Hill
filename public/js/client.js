@@ -5,6 +5,19 @@ var socket = io();
 var game = new Game('#arena', WIDTH, HEIGHT, socket);
 var selectedPlayer = 1;
 var playerName  = '';
+var isOverlay = false;
+
+function toggleOverlay(){
+	isOverlay = !isOverlay;
+	if(isOverlay){
+		document.getElementById('overlay').style.display = "block";
+	}
+	else{
+		document.getElementById('overlay').style.display = "none";
+	}
+}
+
+window.addEventListener('load', toggleOverlay, false);
 
 socket.on('addPlayer', function(player){
 	game.addPlayer(player.id, player.type, player.isLocal, player.x, player.y);
@@ -24,6 +37,7 @@ $(document).ready( function(){
 	$('#join').click( function(){
 		playerName = $('#player-name').val();
 		joinGame(playerName, selectedPlayer, socket);
+		toggleOverlay();
 	});
 
 	$('#player-name').keyup( function(e){
@@ -31,6 +45,7 @@ $(document).ready( function(){
 		var k = e.keyCode || e.which;
 		if(k == 13){
 			joinGame(playerName, selectedPlayer, socket);
+			toggleOverlay();
 		}
 	});
 
