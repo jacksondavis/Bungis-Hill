@@ -14,12 +14,27 @@
 	<link rel="stylesheet" href="css/players.css">
 
 	<link rel="shortcut icon" href="img/icon.png">
+	<style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { background: #ffffff; padding: 3px; position: relative; bottom: 0; width: 100%; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+    </style>
 
 </head>
 <body>
 	<!--[if lt IE 7]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
+
+	<ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
 
 	<div id="prompt" class="name-prompt">
 		<div class="input-group">
@@ -54,6 +69,20 @@
 	<script type="text/javascript" src="js/socket.io.js"></script>
 	<script type="text/javascript" src="js/game.js"></script>
 	<script type="text/javascript" src="js/client.js"></script>
+
+	<script>
+  	$(function () {
+    	var socket = io();
+    	$('form').submit(function(){
+      	socket.emit('chat message', $('#m').val());
+      	$('#m').val('');
+      	return false;
+    	});
+    	socket.on('chat message', function(msg){
+      	$('#messages').append($('<li>').text(msg));
+    	});
+  	});
+	</script>
 
 	<script>
 		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

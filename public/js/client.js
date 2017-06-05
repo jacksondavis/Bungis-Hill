@@ -1,7 +1,7 @@
 var WIDTH = 1100;
 var HEIGHT = 580;
 // This IP is hardcoded to my server, replace with your own
-var socket = io.connect('127.0.0.1');
+var socket = io();
 var game = new Game('#arena', WIDTH, HEIGHT, socket);
 var selectedPlayer = 1;
 var playerName  = '';
