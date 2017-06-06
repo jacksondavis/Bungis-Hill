@@ -1,7 +1,70 @@
 *{
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+}
+
+.arena{
+	background-color: #DAD5B7;
+	border-radius: 4px;
 	box-sizing: border-box;
+	margin: auto;
+	pointer-events: none;
+	position: absolute;
+	top: 0; left: 0; right: 350px; bottom: 0;
+}
+
+.chat{
+	background-color: #DAD5B7;
+	border-radius: 4px;
+	height: 575px;
+	margin: auto;
+	position: absolute;
+	top: 0; left: 1145px; right: 0; bottom: 0;
+	width: 350px;
+}
+
+.chat button{
+	border-bottom-right-radius: 4px;
+	margin: 0;
+	width: 70px;
+}
+
+.chat form{
+	background: none;
+	border-top: 2px solid;
+	margin-top: 2em;
+	padding: 0;
+	position: absolute;
+}
+
+.chat input{
+	border-bottom-left-radius: 4px;
+	margin: 0;
+	width: 280px;
+}
+
+form{
+	background: none;
+	bottom: 0;
+	padding: 3px;
+	position: fixed;
+	width: 100%;
+}
+
+form button{
+	background: #3A5F6F;
+	border: none;
+	color: white;
+	padding: 10px;
+	width: 9%;
+}
+
+form input{
+	border: 0;
+	margin-right: .5%;
+	padding: 10px;
+	width: 90%;
 }
 
 html, body{
@@ -9,57 +72,55 @@ html, body{
 	font: 13px Helvetica, Arial;
 }
 
-.name-prompt{
+.info{
+	height: 40px;
+	margin-top: -85px; margin-left: -50px;
+	opacity: .8;
 	position: absolute;
-	margin: auto;
-	top: 0; left: 0; right: 0; bottom: 0;
-	width: 400px;
-	background-color: #3A5F6F;
-	z-index: 2;
-	padding: 10px;
-	height: 275px;
-	border-radius: 4px;
+	top: 0; left: 0;
+	width: 100px;
 }
 
-.arena{
-	background-color: #DAD5B7;
-	pointer-events: none;
-	position: absolute;
-	margin: auto;
-	top: 0; left: 0; right: 350px; bottom: 0;
+.name-select-button{
+	font-weight: bold;
+	padding: 11.5px 12px;
+	transition: all 0.3s ease;
+	background-color: #158cba;
+	border: none;
 	border-radius: 4px;
+	color: #ededed;
+	float: right;
 }
 
-.chat{
-	background-color: #DAD5B7;
-	position: absolute;
-	margin: auto;
-	top: 0; left: 1145px; right: 0; bottom: 0;
-	border-radius: 4px;
-	height: 580px;
-	width: 350px;
+.name-select-button:hover{
+	background-color: #0099CC;
+	color: #ededed;
 }
 
-.chat input{
-	width: 300px;
-	margin: 0;
+.input-group{
+	width: 100%;
 }
-.chat button{
-	width: 50px;
-	margin: 0;
+
+.label{
+	color: #5e5e5e;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0 auto;
+	text-align: center;
+	width: 100px;
 }
 
 #messages{
-	height: 93%;
 	background: #DAD5B7;
-	transform: rotate(180deg);
+	bottom: 0;
+	height: 93%;
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
 	padding: 3px;
 	position: relative;
-	bottom: 0;
+	transform: rotate(180deg);
 	width: 100%;
-	margin: 0;
-	list-style-type: none;
-	overflow: hidden;
 }
 
 #messages li
@@ -67,97 +128,78 @@ html, body{
 	padding: 5px 10px;
 }
 
-.chat form{
-	border-top: 2px solid;
+.name-prompt{
+	background-color: #3A5F6F;
+	border-radius: 4px;
+	height: 275px;
+	margin: auto;
+	padding: 10px;
 	position: absolute;
-	background: none;
-	padding: 0;
-	margin-top: 2em;
+	top: 0; left: 0; right: 0; bottom: 0;
+	width: 400px;
+	z-index: 2;
+}
+
+.overlay{
+	background-color: rgba(0,0,0,0.5);
+	cursor: default;
+	display: none;
+	height: 100vh;
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	width: 100vw;
+	z-index: 2;
 }
 
 .player{
-	position: absolute;
-	background-repeat: no-repeat;
 	background-position: -10px 0;
-}
-
-.info{
-	width: 100px;
-	height: 40px;
+	background-repeat: no-repeat;
 	position: absolute;
-	top: 0;
-	left: 0;
-	margin-top: -85px;
-	margin-left: -50px;
-	opacity: .8;
 }
 
-.label{
-	font-size: 12px;
-	text-align: center;
-	width: 100px;
-	color: #5e5e5e;
-	margin: 0 auto;
-	display: inline-block;
+#player-name{
+	width: 65%;
+	border-radius: 4px;
 }
-
-form{
-	background: #000;
-	padding: 3px;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-}
-
-form input{
-	border: 0;
-	padding: 10px;
-	width: 90%;
-	margin-right: .5%;
-}
-
-form button{
-	width: 9%;
-	background: #3A5F6F;
-	border: none;
-	padding: 10px;
-	color: white;
-}
-
 
 .player-selection{
 	display: inline-block;
-	width: 350px;
-	padding: 0;
 	list-style-type: none;
 	margin: 20px auto 0 auto;
+	padding: 0;
+	width: 350px;
 }
 
 .player-select label{
+	color: white;
 	display: inline-block;
 	margin: 10px 0;
-	width: 100%;
 	text-align: center;
-	color: white;
+	width: 100%;
 }
 
 .player-selection li{
+	border: none;
+	cursor: pointer;
 	display: inline-block;
 	float: left;
-	width: 33%;
-	text-align: center;
-	cursor: pointer;
-	border: 2px solid #eee;
 	padding: 10px 0;
+	text-align: center;
+	width: 33%;
+	border-radius: 4spx;
+	opacity: .5;
+	transition: all 0.6s ease;
+}
+
+.player-selection li:hover{
+	opacity: .9;
 }
 
 .player-selection li.selected{
-	border: 2px solid #158cba;
-	-webkit-border-radius: 5px;
-	   -moz-border-radius: 5px;
-		 -o-border-radius: 5px;
-			border-radius: 5px;
-	border-radius: 5px;
+	outline: none;
+	border-color: #9ecaed;
+	box-shadow: 0 0 10px 4px #9ecaed, 0 0 6px 4px #9ecaed inset;
+	opacity: 1.0;
 }
 
 /* skins */

@@ -1,10 +1,23 @@
 var WIDTH = 1100;
-var HEIGHT = 580;
+var HEIGHT = 575;
 // This IP is hardcoded to my server, replace with your own
 var socket = io();
 var game = new Game('#arena', WIDTH, HEIGHT, socket);
 var selectedPlayer = 1;
 var playerName  = '';
+var isOverlay = false;
+
+function toggleOverlay(){
+	isOverlay = !isOverlay;
+	if(isOverlay){
+		document.getElementById('overlay').style.display = "block";
+	}
+	else{
+		document.getElementById('overlay').style.display = "none";
+	}
+}
+
+window.addEventListener('load', toggleOverlay, false);
 
 socket.on('addPlayer', function(player){
 	game.addPlayer(player.id, player.type, player.isLocal, player.x, player.y);
@@ -50,5 +63,6 @@ function joinGame(playerName, playerType, socket){
 	if(playerName != ''){
 		$('#prompt').hide();
 		socket.emit('joinGame', {id: playerName, type: playerType});
+		toggleOverlay();
 	}
 }
