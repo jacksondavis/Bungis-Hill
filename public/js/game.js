@@ -1,6 +1,5 @@
 var DEBUG = true;
 var INTERVAL = 50;
-var ROTATION_SPEED = 5;
 var ARENA_MARGIN = 30;
 
 function Game(arenaId, w, h, socket){
@@ -88,14 +87,22 @@ Game.prototype = {
 function Player(id, type, $arena, game, isLocal, x, y, hp){
 	this.id = id;
 	this.type = type;
-	this.speed = 5;
 	this.$arena = $arena;
-	this.w = 60;
-	this.h = 80;
+	// Max speed
+	this.speed = 10;
+	// Friction
+	this.friction = 0.90;
+	// Current X and Y velocities
+	this.velX = 0;
+	this.velY = 0;
+	// Current position
 	this.x = x;
 	this.y = y;
 	this.mx = null;
 	this.my = null;
+	// Associated width and height of player
+	this.w = 60;
+	this.h = 60;
 	this.dir = {
 		up: false,
 		down: false,
@@ -132,16 +139,11 @@ Player.prototype = {
 	},
 
 	refresh: function(){
-		this.$body.css('left', this.x - 30 + 'px');
-		this.$body.css('top', this.y - 40 + 'px');
-		
+		this.$body.css('left', this.x - (this.w/2.0) + 'px');
+		this.$body.css('top', this.y - 50 + 'px');
+
 		this.$info.css('left', (this.x) + 'px');
 		this.$info.css('top', (this.y) + 'px');
-		if(this.isMoving()){
-			this.$info.addClass('fade');
-		}else{
-			this.$info.removeClass('fade');
-		}
 
 	},
 
@@ -188,29 +190,41 @@ Player.prototype = {
 	},
 
 	move: function(){
-
-		var moveX = 0;
-		var moveY = 0;
-
 		if (this.dir.up) {
-			moveY = -1;
-		} else if (this.dir.down) {
-			moveY = 1;
+			if (this.velY > -this.speed) {
+				this.velY--;
+			};
+		}
+		if (this.dir.down) {
+			if (this.velY < this.speed) {
+				this.velY++;
+			}
 		}
 		if (this.dir.left) {
-			moveX = -1;
-		} else if (this.dir.right) {
-			moveX = 1;
+			if (this.velX > -this.speed) {
+				this.velX--;
+			}
+		}
+		if (this.dir.right) {
+			if (this.velX < this.speed) {
+				this.velX++;
+			}
 		}
 
-		moveX = this.speed * moveX;
-		moveY = this.speed * moveY;
+		// Apply friction to velocities
+		this.velX *= this.friction;
+		this.velY *= this.friction;
 
-		if(this.x + moveX > (0 + ARENA_MARGIN) && (this.x + moveX) < (this.$arena.width() - ARENA_MARGIN)){
-			this.x += moveX;
+		// // Move if bound constraints are satisfied
+		if(this.x + this.velX > ARENA_MARGIN && (this.x + this.velX) < (this.$arena.width() - ARENA_MARGIN)){
+			this.x += this.velX;
+		} else {
+			this.velX = 0;
 		}
-		if(this.y + moveY > (0 + ARENA_MARGIN) && (this.y + moveY) < (this.$arena.height() - ARENA_MARGIN)){
-			this.y += moveY;
+		if(this.y + this.velY > ARENA_MARGIN + 30 && (this.y + this.velY) < (this.$arena.height() - ARENA_MARGIN)){
+			this.y += this.velY;
+		} else {
+			this.velY = 0;
 		}
 		this.refresh();
 	}
