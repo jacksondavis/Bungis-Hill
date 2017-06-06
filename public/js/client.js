@@ -1,5 +1,5 @@
 var WIDTH = 1100;
-var HEIGHT = 580;
+var HEIGHT = 575;
 // This IP is hardcoded to my server, replace with your own
 var socket = io();
 var game = new Game('#arena', WIDTH, HEIGHT, socket);
@@ -37,7 +37,6 @@ $(document).ready( function(){
 	$('#join').click( function(){
 		playerName = $('#player-name').val();
 		joinGame(playerName, selectedPlayer, socket);
-		toggleOverlay();
 	});
 
 	$('#player-name').keyup( function(e){
@@ -45,7 +44,6 @@ $(document).ready( function(){
 		var k = e.keyCode || e.which;
 		if(k == 13){
 			joinGame(playerName, selectedPlayer, socket);
-			toggleOverlay();
 		}
 	});
 
@@ -65,5 +63,6 @@ function joinGame(playerName, playerType, socket){
 	if(playerName != ''){
 		$('#prompt').hide();
 		socket.emit('joinGame', {id: playerName, type: playerType});
+		toggleOverlay();
 	}
 }
