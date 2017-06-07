@@ -47,8 +47,8 @@ $(document).ready( function(){
 		}
 	});
 
-	$('ul.player-selection li').click( function(){
-		$('.player-selection li').removeClass('selected')
+	$('#colorPickerId').click( function(){
+		$('#colorPickerId').removeClass('selected')
 		$(this).addClass('selected');
 		selectedPlayer = $(this).data('player');
 	});
